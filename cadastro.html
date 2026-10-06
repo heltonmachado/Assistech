@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Cadastre-se na Assistech.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="auth.js" defer></script>
+	<title>Cadastro | Assistech</title>
+</head>
+<body>
+	<header>
+		<div class="container nav">
+			<a class="logo" href="index.html#inicio" aria-label="Assistech - início">
+				<img src="imagens/logoassistech1.png" alt="Assistech">
+			</a>
+			<a class="back-link" href="login.html">Voltar ao login</a>
+		</div>
+	</header>
+
+	<main class="auth-page">
+		<section class="auth-card" aria-labelledby="cadastro-title">
+			<p class="eyebrow"><span class="eyebrow-dot"></span> Novo usuário</p>
+			<h1 id="cadastro-title">Crie sua conta.</h1>
+			<p class="auth-description">Cadastre seus dados para facilitar os próximos atendimentos.</p>
+			<form action="/api/auth/register" data-auth-form="register" method="post">
+				<label for="nome-cadastro">
+					Nome completo
+					<input id="nome-cadastro" name="nome" type="text" placeholder="Digite seu nome completo" autocomplete="name" required>
+				</label>
+				<label for="email-cadastro">
+					E-mail
+					<input id="email-cadastro" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+				</label>
+				<label for="perfil-cadastro">
+					Tipo de usuário
+					<select id="perfil-cadastro" name="perfil" required>
+						<option value="cliente">Cliente</option>
+						<option value="tecnico">Usuário técnico</option>
+					</select>
+				</label>
+				<label for="codigo-tecnico">
+					Código de convite técnico <span>(somente para usuário técnico)</span>
+					<input id="codigo-tecnico" name="codigo_tecnico" type="password" placeholder="Informe o código, se aplicável" autocomplete="off">
+				</label>
+				<label for="senha-cadastro">
+					Senha
+					<input id="senha-cadastro" name="senha" type="password" placeholder="Crie uma senha forte" autocomplete="new-password" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}" title="Use pelo menos 8 caracteres, uma letra maiúscula, uma minúscula, um número e um símbolo." required>
+				</label>
+				<button type="submit">Cadastrar <span aria-hidden="true">↗</span></button>
+				<p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+			</form>
+			<a class="auth-link" href="login.html">Já tenho uma conta</a>
+		</section>
+	</main>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel administrativo da Assistech.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="admin.js" defer></script>
+  <title>Painel administrativo | Assistech</title>
+</head>
+<body>
+  <header>
+    <div class="container nav equipment-nav">
+      <a class="logo" href="index.html#inicio" aria-label="Assistech - início"><img src="imagens/logoassistech1.png" alt="Assistech"></a>
+      <div class="user-area"><span id="admin-name">Painel administrativo</span><button id="logout-button" type="button">Sair</button></div>
+    </div>
+  </header>
+  <main class="equipment-page admin-page">
+    <div class="container">
+      <div class="page-heading">
+        <div><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Controle interno</p><h1>Visão geral.</h1><p>Gerencie perfis de acesso e acompanhe todas as ordens de serviço.</p></div>
+        <a class="back-link" href="index.html">Voltar ao início</a>
+      </div>
+      <section class="admin-section" aria-labelledby="users-title">
+        <div class="history-heading"><div><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Acessos</p><h2 id="users-title">Usuários cadastrados</h2></div></div>
+        <div id="users-list" class="admin-table-wrap"><p class="empty-state">Carregando usuários...</p></div>
+      </section>
+      <section class="admin-section" aria-labelledby="orders-title">
+        <div class="history-heading"><div><p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Operação</p><h2 id="orders-title">Ordens de serviço</h2></div></div>
+        <div id="orders-list" class="admin-table-wrap"><p class="empty-state">Carregando ordens...</p></div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

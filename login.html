@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Acesse sua conta Assistech.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="auth.js" defer></script>
+	<title>Login | Assistech</title>
+</head>
+<body>
+	<header>
+		<div class="container nav">
+			<a class="logo" href="index.html#inicio" aria-label="Assistech - início">
+				<img src="imagens/logoassistech1.png" alt="Assistech">
+			</a>
+			<a class="back-link" href="index.html">Voltar ao início</a>
+		</div>
+	</header>
+
+	<main class="auth-page">
+		<section class="auth-card" aria-labelledby="login-title">
+			<p class="eyebrow"><span class="eyebrow-dot"></span> Área do usuário</p>
+			<h1 id="login-title">Bem-vindo de volta.</h1>
+			<p class="auth-description">Entre para acompanhar seus atendimentos e solicitações.</p>
+			<form action="/api/auth/login" data-auth-form="login" method="post">
+				<label for="usuario">
+					Nome de usuário
+					<input id="usuario" name="usuario" type="text" placeholder="Digite seu nome" autocomplete="username" required>
+				</label>
+				<label for="senha">
+					Senha
+					<input id="senha" name="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+				</label>
+				<label for="perfil">
+					Tipo de acesso
+					<select id="perfil" name="perfil" required>
+						<option value="cliente">Cliente</option>
+						<option value="tecnico">Usuário técnico</option>
+						<option value="admin">Administrador</option>
+					</select>
+				</label>
+				<button type="submit">Entrar <span aria-hidden="true">↗</span></button>
+				<p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+			</form>
+			<div class="recovery-box">
+				<h2>Esqueceu sua senha?</h2>
+				<p>Informe seu e-mail e enviaremos uma senha temporária.</p>
+				<form action="/api/auth/recover" data-auth-form="recovery" method="post">
+					<label for="email-recuperacao">
+						E-mail cadastrado
+						<input id="email-recuperacao" name="email" type="email" placeholder="seu@email.com" autocomplete="email" required>
+					</label>
+					<button type="submit">Enviar nova senha <span aria-hidden="true">↗</span></button>
+					<p class="form-status" id="recovery-status" role="status" aria-live="polite" hidden></p>
+				</form>
+			</div>
+			<a class="auth-link" href="cadastro.html">Cadastrar novo usuário</a>
+		</section>
+	</main>
+</body>
+</html>

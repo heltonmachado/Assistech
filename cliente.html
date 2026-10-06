@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Consulte o andamento do seu equipamento na Assistech.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="cliente.js" defer></script>
+	<title>Área do cliente | Assistech</title>
+</head>
+<body>
+	<header>
+		<div class="container nav equipment-nav">
+			<a class="logo" href="index.html#inicio" aria-label="Assistech - início">
+				<img src="imagens/logoassistech1.png" alt="Assistech">
+			</a>
+			<div class="user-area"><span id="user-name">Área do cliente</span><button id="logout-button" type="button">Sair</button></div>
+		</div>
+	</header>
+
+	<main class="equipment-page client-page">
+		<div class="container">
+			<div class="page-heading">
+				<div>
+					<p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Área do cliente</p>
+					<h1>Acompanhe seu equipamento.</h1>
+					<p>Informe o número da OS para consultar o serviço realizado pela equipe técnica.</p>
+				</div>
+				<a class="back-link" href="index.html">Voltar ao início</a>
+			</div>
+
+			<section class="os-consultation client-only" aria-labelledby="os-title">
+				<div class="history-heading">
+					<div>
+						<p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Acompanhamento</p>
+						<h2 id="os-title">Consultar uma OS</h2>
+					</div>
+				</div>
+				<form id="os-query-form" class="report-filter">
+					<label for="os-number">Número da OS<input id="os-number" name="numero_os" type="text" placeholder="Ex.: OS-000007" required></label>
+					<button type="submit">Consultar OS <span aria-hidden="true">↗</span></button>
+				</form>
+				<div id="os-result" class="os-result" hidden></div>
+			</section>
+		</div>
+	</main>
+</body>
+</html>

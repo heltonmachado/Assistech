@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Cadastre seus equipamentos na Assistech.">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="equipamentos.js?v=20260925-2" defer></script>
+	<title>Meus equipamentos | Assistech</title>
+</head>
+<body>
+	<header>
+		<div class="container nav equipment-nav">
+			<a class="logo" href="index.html#inicio" aria-label="Assistech - início">
+				<img src="imagens/logoassistech1.png" alt="Assistech">
+			</a>
+			<div class="user-area">
+				<span id="user-name">Área do usuário</span>
+				<button id="logout-button" type="button">Sair</button>
+			</div>
+		</div>
+	</header>
+
+	<main class="equipment-page">
+		<div class="container">
+			<div class="page-heading">
+				<div>
+					<p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> <span id="area-label">Área técnica</span></p>
+					<h1 id="page-title">Equipamentos e status.</h1>
+					<p id="page-description">Cadastre os detalhes e acompanhe cada equipamento durante o atendimento.</p>
+				</div>
+				<a class="back-link" href="index.html">Voltar ao início</a>
+			</div>
+
+			<section class="os-consultation client-only" aria-labelledby="os-title">
+				<div class="history-heading">
+					<div>
+						<p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Acompanhe seu serviço</p>
+						<h2 id="os-title">Consultar uma OS</h2>
+					</div>
+				</div>
+				<form id="os-query-form" class="report-filter">
+					<label for="os-number">Número da OS<input id="os-number" name="numero_os" type="text" placeholder="Ex.: OS-2026-000001" required></label>
+					<button type="submit">Consultar OS</button>
+				</form>
+				<div id="os-result" class="os-result" hidden></div>
+			</section>
+
+			<section class="equipment-layout technician-only" aria-label="Cadastro de equipamento">
+				<form id="equipment-form" class="equipment-form" enctype="multipart/form-data">
+					<div class="form-header"><span>Informações do equipamento</span><span aria-hidden="true">01</span></div>
+					<label for="cliente-nome">
+						Nome do cliente
+						<input id="cliente-nome" name="cliente" type="text" placeholder="Digite o nome do cliente" maxlength="120" required>
+					</label>
+					<label for="equipamento-nome">
+						Nome do equipamento
+						<input id="equipamento-nome" name="nome" type="text" placeholder="Ex.: Notebook Dell" maxlength="120" required>
+					</label>
+					<label for="equipamento-modelo">
+						Modelo
+						<input id="equipamento-modelo" name="modelo" type="text" placeholder="Ex.: Inspiron 15 3000" maxlength="120" required>
+					</label>
+					<label for="equipamento-defeito">
+						Defeito apresentado
+						<textarea id="equipamento-defeito" name="defeito" placeholder="Descreva o problema com o máximo de detalhes" maxlength="5000" required></textarea>
+					</label>
+					<label class="technician-only" for="equipamento-valor">
+						Valor do serviço (R$)
+						<input id="equipamento-valor" name="valor" type="number" min="0" max="99999999.99" step="0.01" placeholder="0,00" required>
+					</label>
+					<label class="technician-only" for="equipamento-pecas">
+						Peças utilizadas <span>(opcional)</span>
+						<textarea id="equipamento-pecas" name="pecas" placeholder="Ex.: tela, cabo flat, pasta térmica" maxlength="5000"></textarea>
+					</label>
+					<label class="photo-field" for="equipamento-foto">
+						Foto do equipamento <span>(opcional)</span>
+						<input id="equipamento-foto" name="foto" type="file" accept="image/jpeg,image/png,image/webp">
+						<small>JPG, PNG ou WebP. Tamanho máximo: 5 MB.</small>
+					</label>
+					<button type="submit">Salvar equipamento <span aria-hidden="true">↗</span></button>
+					<p class="form-status" id="equipment-status" role="status" aria-live="polite" hidden></p>
+					<div id="equipment-os" class="os-created" role="status" aria-live="polite" hidden></div>
+				</form>
+
+				<aside class="equipment-aside technician-only">
+					<div class="aside-number">02</div>
+					<h2>Seu histórico, organizado.</h2>
+					<p>Com os dados salvos, a equipe consegue entender melhor o equipamento antes mesmo da avaliação.</p>
+					<div class="aside-line"></div>
+					<strong>Atendimento mais claro.<br>Reparo mais preciso.</strong>
+				</aside>
+			</section>
+
+			<section class="equipment-history technician-only" aria-labelledby="history-title">
+				<div class="history-heading">
+					<div>
+						<p class="eyebrow eyebrow-dark"><span class="eyebrow-dot"></span> Acompanhamento</p>
+						<h2 id="history-title">Equipamentos cadastrados</h2>
+					</div>
+					<div class="report-actions technician-only">
+						<button id="refresh-equipment" class="outline-button" type="button">Atualizar lista</button>
+						<button id="print-report" class="outline-button" type="button">Imprimir relatório</button>
+					</div>
+				</div>
+				<div class="equipment-summary technician-only" aria-label="Resumo dos equipamentos">
+					<div class="summary-card"><span>Total</span><strong id="summary-total">0</strong><small>equipamentos</small></div>
+					<div class="summary-card summary-progress"><span>Em manutenção</span><strong id="summary-progress">0</strong><small>em andamento</small></div>
+					<div class="summary-card summary-done"><span>Concluídos</span><strong id="summary-done">0</strong><small>finalizados</small></div>
+				</div>
+				<form id="report-filter" class="report-filter technician-only">
+					<label for="filter-client">Nome do cliente<input id="filter-client" name="cliente" type="search" placeholder="Filtrar cliente"></label>
+					<label for="filter-equipment">Equipamento ou modelo<input id="filter-equipment" name="equipamento" type="search" placeholder="Filtrar equipamento"></label>
+					<button type="submit">Filtrar</button>
+				</form>
+				<div id="equipment-list" class="equipment-list" aria-live="polite">
+					<p class="empty-state">Carregando equipamentos...</p>
+				</div>
+			</section>
+		</div>
+	</main>
+</body>
+</html>
